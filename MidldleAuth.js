@@ -18,7 +18,15 @@ function authRole(role) {
     }
 }
 
-module.exports = { authUser, authRole  };
+function authDelete(req, res, next){
+        if (req.user.name != 'Kyle') {
+            res.status(401);
+            return res.send('nope')
+        }
+        next()
+}
+
+module.exports = { authUser, authRole,authDelete  };
 
 /* const UserId = req.body.UserId;
     if (UserId) {
